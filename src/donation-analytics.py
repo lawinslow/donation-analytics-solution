@@ -87,7 +87,9 @@ def main(argv):
         try:
             trans_dt = datetime.datetime.strptime(row[indx_trans_date], datetime_fmt)
         except ValueError:
+            # write line number and skip to next line, don't know date order if missing date
             sys.stderr.write(str(input_rownum) + '# line: Problem parsing datetime\n')
+            continue
 
 
         zip_trunc = row[indx_zip][0:5]
