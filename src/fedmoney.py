@@ -17,8 +17,10 @@ class FedDonor:
             self.lastdonation = trans_dt
             return False
 
-        # if the last donation was earlier, then it was a repeat
-        if self.lastdonation < trans_dt:
+        # if the last donation was this or a previous year,
+        # then it was a repeat. If it is later (>) then it
+        # was very out of order so ignore
+        if self.lastdonation.year <= trans_dt.year:
             return True
         else:
             # otherwise, record new, even earlier donation
