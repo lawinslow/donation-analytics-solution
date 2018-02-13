@@ -54,20 +54,20 @@ def main(argv):
         percentile_val = int(f_percentile.readline().strip())
 
     except IOError:
-        sys.stderr.write('Trouble opening input and output files, please verify files:')
-        sys.stderr.writelines('Input file:' + input_fname)
-        sys.stderr.writelines('Output file:' + output_fname)
-        sys.stderr.writelines('Percentile file:' + percentile_fname)
+        sys.stderr.write('Trouble opening input and output files, please verify files:\n')
+        sys.stderr.write('Input file:' + input_fname + '\n')
+        sys.stderr.write('Output file:' + output_fname + '\n')
+        sys.stderr.write('Percentile file:' + percentile_fname + '\n')
         sys.exit(1)
 
     except ValueError:
-        sys.stderr.writelines('Problem reading percentile value.')
-        sys.stderr.writelines('Please verify percentile file:', + percentile_fname)
+        sys.stderr.write('Problem reading percentile value.\n')
+        sys.stderr.write('Please verify percentile file:', + percentile_fname + '\n')
         sys.exit(1)
 
     # check all the input parameters for valid range/value
     if percentile_val < 1 or percentile_val > 100:
-        sys.stderr.write('Percentile input file must contain number between 1 and 100')
+        sys.stderr.write('Percentile input file must contain number between 1 and 100\n')
         sys.exit(1)
 
     data_csv = csv.reader(f_input, delimiter='|')
